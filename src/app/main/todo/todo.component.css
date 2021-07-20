@@ -1,0 +1,41 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main-container{
+    margin: 0 400px;
+    flex: 1;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.list{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-container{
+    flex: 8;
+    margin-right: 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+}
+
+.date-container{
+    display: flex;
+    flex: 4;
+}
+
+.loading{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+}

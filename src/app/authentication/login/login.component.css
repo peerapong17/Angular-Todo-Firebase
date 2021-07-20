@@ -1,0 +1,100 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(240, 225, 199);
+  }
+  
+  .welcome{
+      font-size: 50px;
+      font-weight: 900;
+      margin-bottom: 50px;
+      text-shadow: 2px 3px rgb(168, 168, 168);
+  }
+  
+  .login-box {
+    width: 25%;
+    height: 50%;
+    background: rgb(241, 179, 190);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 4px rgb(179, 179, 179);
+  }
+  
+  span{
+      text-align: end;
+  }
+  
+  .input-box {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  label {
+      margin-bottom: 10px;
+      font-size: 25px;
+  }
+  
+  input {
+      border: none;
+      background: rgba(253, 253, 253, 0.5);
+      box-sizing: border-box;
+      padding: 10px 20px;
+      border-radius: 7px;
+      font-size: 23px;
+  }
+  
+  input:focus {
+      outline: none;
+  }
+  
+  .account-box{
+      float: right;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+  }
+  
+  .account {
+      font-size: 20px;
+      margin-right: 10px;
+  }
+  
+  .register{
+      font-size: 23px;
+      font-weight: 600;
+      cursor: pointer;
+  }
+  
+  .register:hover{
+      color: rgb(8, 8, 94);
+      text-decoration: underline;
+  }
+  
+  button{
+      border: none;
+      border-radius: 7px;
+      padding: 9px 20px;
+      font-size: 27px;
+      background: rgb(248, 76, 176);
+      color: wheat;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Ubuntu Mono', monospace;
+      box-shadow: 1px 2px rgb(39, 39, 39, 0.55);
+  }
+  
+  button:hover{
+      background: rgb(248, 99, 186);
+  }
+  
+  button:active{
+      background: rgb(248, 76, 176);
+  }

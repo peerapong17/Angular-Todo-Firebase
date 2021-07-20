@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "webloginsystem": {
+      "hosting": {
+        "firebase-authentication": [
+          "webloginsystem"
+        ]
+      }
+    }
+  }
+}

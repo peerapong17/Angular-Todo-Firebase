@@ -1,0 +1,134 @@
+.list-container {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgb(223, 223, 223);
+    box-shadow: 2px 3px rgb(207, 207, 207);
+    border-radius: 12px;
+  }
+  
+  .task-container{
+    display: flex;
+    flex: 6;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+  }
+  
+  .btn-container {
+    display: flex;
+    flex: 4;
+  }
+  
+  .btn-edit {
+    box-sizing: border-box;
+    padding: 17px;
+    margin-right: 10px;
+    border-radius: 7px;
+    border: none;
+    background: rgb(146, 237, 243);
+    box-shadow: 2px 3px rgb(214, 214, 214);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-edit:hover {
+    background: rgb(108, 229, 238);
+  }
+  
+  .btn-edit:active {
+    background: rgb(84, 225, 235);
+  }
+  
+  .btn-delete {
+    box-sizing: border-box;
+    padding: 17px;
+    margin-right: 10px;
+    border-radius: 7px;
+    border: none;
+    background: rgb(255, 150, 164);
+    box-shadow: 2px 3px rgb(214, 214, 214);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-delete:hover{
+    background: rgb(253, 116, 134)
+  }
+  
+  .btn-delete:active{
+    background: rgb(250, 85, 107)
+  }
+  
+  .btn-update {
+    box-sizing: border-box;
+    padding: 17px;
+    margin-right: 10px;
+    border-radius: 7px;
+    border: none;
+    background: rgb(128, 229, 158);
+    box-shadow: 2px 3px rgb(214, 214, 214);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-update:hover{
+    background: rgb(97, 231, 137);
+  }
+  
+  .btn-update:active{
+    background: rgb(58, 230, 109);
+  }
+  
+  .btn-cancel {
+    box-sizing: border-box;
+    padding: 17px;
+    margin-right: 10px;
+    border-radius: 7px;
+    border: none;
+    background: rgb(226, 180, 110);
+    box-shadow: 2px 3px rgb(214, 214, 214);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-cancel:hover{
+    background: rgb(233, 164, 85);
+  }
+  
+  .btn-cancel:active{
+    background: rgb(233, 153, 62);
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    
+  }
+  
+  .input-update{
+    width: 200px;
+    font-size: 23px;
+    font-weight: 600;
+    padding: 0;
+    border: none;
+  }
+  
+  .input-update:focus{
+    outline: none;
+  }
+  
+  span {
+    font-size: 23px;
+    font-weight: 600;
+  }

@@ -1,0 +1,18 @@
+<div class="container">
+    <span class="welcome">Welcome</span>
+    <div class="login-box">
+        <div class="input-box">
+            <label for="email">Email:</label>
+            <input id="email" type="email" autocomplete="off" name="email" [(ngModel)]="email"/>
+        </div>
+        <div class="input-box">
+            <label for="username">Password:</label>
+            <input id="password" type="password" autocomplete="off" name="password" [(ngModel)]="password" />
+        </div>
+        <div class="account-box">
+            <span class="account">Don't have account ?</span>
+            <span (click)="register()" class="register">Register</span>
+        </div>
+        <button (click)="login()">Login</button>
+    </div>
+</div>

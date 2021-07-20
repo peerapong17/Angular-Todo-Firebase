@@ -1,0 +1,19 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="main-container">
+    <div class="todo-container">
+      <app-form></app-form>
+      <span *ngIf="isLoading; else second" class="loading">Loding...</span>
+      <ng-template class="list" #second><app-list *ngFor="let task of listTask"
+          [task]="task.payload.doc.data()['task']" [id]="task.payload.doc.id">
+        </app-list>
+      </ng-template>
+      
+      
+    </div>
+    <form class="date-container">
+      <label for="data">Date:</label>
+      <input type="date" id="data" name="data" />
+    </form>
+  </div>
+</div>

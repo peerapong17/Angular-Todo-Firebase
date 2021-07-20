@@ -1,0 +1,22 @@
+<span class="list-container">
+  <div class="checkbox-container">
+    <input type="checkbox" id="vehicle1" name="vehicle1" />
+  </div>
+  <div class="task-container">
+    <span *ngIf="!isEditing ; else elseBlock">{{task}}</span>
+    <ng-template #elseBlock>
+      <input autofocus class="input-update" type="text" [(ngModel)]="task">
+    </ng-template>
+  </div>
+
+  <div class="btn-container">
+    <button (click)="onEdit()" *ngIf="!isEditing;else elseBtnEdit"  class="btn-edit">Edit</button>
+    <ng-template #elseBtnEdit>
+      <button (click)="onUpdate()" class="btn-update">Update</button>
+    </ng-template>
+    <button  (click)="onDelete()" *ngIf="!isEditing;else elseBtnDelete" class="btn-delete">Delete</button>
+    <ng-template #elseBtnDelete>
+      <button (click)="onCancel()" class="btn-cancel" >Cancel</button>
+    </ng-template>
+  </div>
+</span>
