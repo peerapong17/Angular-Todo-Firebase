@@ -13,18 +13,22 @@ export class FirestoreService {
 
   getTask() {
     return this.angularFireStore
-      .collection('Todo')
-      .doc(this.authenticationService.userData.uid)
-      .collection('TodoTask')
+      .collection('Todo', (ref) =>
+        ref
+          .orderBy('createdAt', 'desc')
+          .where('userId', '==', this.authenticationService.userData.uid)
+      )
       .snapshotChanges();
   }
 
   addTask(task: string) {
     this.angularFireStore
       .collection('Todo')
-      .doc(this.authenticationService.userData.uid)
-      .collection('TodoTask')
-      .add({ task: task })
+      .add({
+        task: task,
+        userId: this.authenticationService.userData.uid,
+        createdAt: new Date(),
+      })
       .then((res) => {
         console.log(res);
       });
@@ -33,8 +37,6 @@ export class FirestoreService {
   updateTask(id: string, task: string) {
     this.angularFireStore
       .collection('Todo')
-      .doc(this.authenticationService.userData.uid)
-      .collection('TodoTask')
       .doc(id)
       .update({ task: task })
       .then((res) => {
@@ -43,11 +45,6 @@ export class FirestoreService {
   }
 
   deleteTask(id: string) {
-    this.angularFireStore
-      .collection('Todo')
-      .doc(this.authenticationService.userData.uid)
-      .collection('TodoTask')
-      .doc(id)
-      .delete();
+    this.angularFireStore.collection('Todo').doc(id).delete();
   }
 }

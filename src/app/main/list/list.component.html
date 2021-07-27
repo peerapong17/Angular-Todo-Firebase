@@ -4,6 +4,7 @@
   </div>
   <div class="task-container">
     <span *ngIf="!isEditing ; else elseBlock">{{task}}</span>
+    <span class="timeStamps">{{createdAt.toDate() | date:'shortTime'}}</span>
     <ng-template #elseBlock>
       <input autofocus class="input-update" type="text" [(ngModel)]="task">
     </ng-template>

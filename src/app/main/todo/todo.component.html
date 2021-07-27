@@ -5,7 +5,7 @@
       <app-form></app-form>
       <span *ngIf="isLoading; else second" class="loading">Loding...</span>
       <ng-template class="list" #second><app-list *ngFor="let task of listTask"
-          [task]="task.payload.doc.data()['task']" [id]="task.payload.doc.id">
+          [task]="task.payload.doc.data()['task']" [createdAt]="task.payload.doc.data()['createdAt']" [id]="task.payload.doc.id">
         </app-list>
       </ng-template>
       

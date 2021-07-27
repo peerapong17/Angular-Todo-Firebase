@@ -12,7 +12,7 @@ import { DocumentChangeAction, DocumentData } from '@angular/fire/firestore';
 export class TodoComponent implements OnInit {
   task: string = '';
   listTask: DocumentChangeAction<DocumentData>[] = [];
-  isLoading:boolean = true
+  isLoading: boolean = true;
   constructor(
     private authentication: AuthenticationService,
     private router: Router,
@@ -23,7 +23,7 @@ export class TodoComponent implements OnInit {
     }
     this.fireStore.getTask().subscribe((data) => {
       this.listTask = data
-      this.isLoading = false
+      this.isLoading = false;
     });
   }
 
