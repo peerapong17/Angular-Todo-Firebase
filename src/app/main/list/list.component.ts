@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ListComponent implements OnInit {
   isEditing: boolean = false;
   @Input() task: string = '';
-  @Input() createdAt: string = '';
+  @Input() createdAt: any = '';
   @Input() id: string = '';
 
   constructor(private fireStore: FirestoreService) {}

@@ -88,7 +88,7 @@
       font-weight: 600;
       cursor: pointer;
       font-family: 'Ubuntu Mono', monospace;
-      box-shadow: 1px 2px rgb(39, 39, 39, 0.55);
+      box-shadow: 1px 2px rgba(148, 148, 148, 0.55);
   }
   
   button:hover{
@@ -97,4 +97,14 @@
   
   button:active{
       background: rgb(248, 76, 176);
+  }
+
+  .google-signin-btn{
+      background: wheat;
+      box-shadow: 1px 1px rgba(209, 209, 209, 0.55);
+      color: black;
+  }
+
+  .google-signin-btn:hover {
+    background: rgb(240, 210, 154);
   }

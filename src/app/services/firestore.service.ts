@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class FirestoreService {
   constructor(
     private angularFireStore: AngularFirestore,
-    private authenticationService: AuthenticationService
+    private authService: AuthenticationService
   ) {}
 
   getTask() {
@@ -16,7 +16,7 @@ export class FirestoreService {
       .collection('Todo', (ref) =>
         ref
           .orderBy('createdAt', 'desc')
-          .where('userId', '==', this.authenticationService.userData.uid)
+          .where('userId', '==', this.authService.userData.uid)
       )
       .snapshotChanges();
   }
@@ -26,7 +26,7 @@ export class FirestoreService {
       .collection('Todo')
       .add({
         task: task,
-        userId: this.authenticationService.userData.uid,
+        userId: this.authService.userData.uid,
         createdAt: new Date(),
       })
       .then((res) => {
