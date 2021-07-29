@@ -48,7 +48,6 @@ export class AuthenticationService {
       .then(({ user }) => {
         this.SetUserData(user);
         localStorage.setItem('user', JSON.stringify(this.userData));
-        this.router.navigate(['todo']);
       })
       .catch((err) => {
         window.alert(err.message);
@@ -61,7 +60,7 @@ export class AuthenticationService {
       .then(({ user }) => {
         this.SetUserData(user);
         localStorage.setItem('user', JSON.stringify(this.userData));
-        this.router.navigate(['todo']);
+        this.router.navigate(['login']);
       })
       .catch((err) => {
         window.alert(err.message);

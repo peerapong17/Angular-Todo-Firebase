@@ -1,18 +1,35 @@
 <div class="container">
     <span class="welcome">Welcome</span>
-    <div class="login-box">
+    <form [formGroup]="inputForm" class="login-box">
         <div class="input-box">
             <label for="email">Email:</label>
-            <input type="email" autocomplete="off" name="email" [(ngModel)]="email" />
+            <input [ngClass]="{invalid: checkEmailEmpty}" [ngClass]="{invalid: checkEmailError}" type="email" autocomplete="off" formControlName="email" />
+            <ng-container *ngIf="checkEmailError">
+                <span class="error-message" *ngIf="email.errors.required">Email is required</span>
+                <span class="error-message" *ngIf="email.errors.pattern">Email is not valid</span>
+            </ng-container>
+            <ng-container *ngIf="checkEmailEmpty">
+                <span class="error-message" *ngIf="email.errors.required">Email is required</span>
+            </ng-container>
         </div>
         <div class="input-box">
             <label for="password">Password:</label>
-            <input type="password" autocomplete="off" name="password" [(ngModel)]="password" />
+            <input [ngClass]="{invalid: checkPasswordEmpty}" [ngClass]="{invalid: checkPasswordError}" type="password" autocomplete="off"
+                formControlName="password" />
+            <ng-container *ngIf="checkPasswordError">
+                <span class="error-message" *ngIf="password.errors.required">Password is required</span>
+                <span class="error-message" *ngIf="password.errors.minlength">Password should be at least 6
+                    characters</span>
+            </ng-container>
+            <ng-container *ngIf="checkPasswordEmpty">
+                <span class="error-message" *ngIf="password.errors.required">Password is required</span>
+            </ng-container>
         </div>
         <div class="account-box">
             <span class="account">Already have account ?</span>
             <span (click)="login()" class="register">Login</span>
         </div>
         <button (click)="register()">Register</button>
-    </div>
+    </form>
 </div>
+<!-- {{inputForm.controls.email.errors | json}} -->
