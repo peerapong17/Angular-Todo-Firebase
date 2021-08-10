@@ -3,7 +3,7 @@
     <div class="login-box">
         <div class="input-box">
             <label for="email">Email:</label>
-            <input id="email" type="email" autocomplete="off" name="email" [(ngModel)]="email"/>
+            <input id="email" type="email" autocomplete="off" name="email" [(ngModel)]="email" />
         </div>
         <div class="input-box">
             <label for="username">Password:</label>
@@ -14,6 +14,10 @@
             <span (click)="register()" class="register">Register</span>
         </div>
         <button (click)="login()">Login</button>
-        <button class="google-signin-btn" (click)="authService.GoogleAuth()">Signin with google</button>
+
+        <button class="google-signin-btn" (click)="authService.GoogleAuth()">
+            <img src="../../../assets/images/google.jpg" alt="google" width="30" height="30">
+            Google sign in
+        </button>
     </div>
 </div>

@@ -4,6 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DocumentChangeAction, DocumentData } from '@angular/fire/firestore';
 
+interface Task {
+  task: string;
+  createdAt: string;
+  userId: string;
+}
+
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -11,18 +17,12 @@ import { DocumentChangeAction, DocumentData } from '@angular/fire/firestore';
 })
 export class TodoComponent implements OnInit {
   task: string = '';
-  listTask: DocumentChangeAction<DocumentData>[] = [];
+  listTask: DocumentChangeAction<Task>[] = [];
+  // listTask: Task[] = [];
   isLoading: boolean = true;
-  constructor(
-    private authentication: AuthenticationService,
-    private router: Router,
-    private fireStore: FirestoreService
-  ) {
-    if (this.authentication.isLoggedIn === false) {
-      this.router.navigate(['login']);
-    }
-    this.fireStore.getTask().subscribe((data) => {
-      this.listTask = data
+  constructor(private fireStore: FirestoreService) {
+    this.fireStore.getTask().subscribe((data: DocumentChangeAction<Task>[]) => {
+      this.listTask = data;
       this.isLoading = false;
     });
   }

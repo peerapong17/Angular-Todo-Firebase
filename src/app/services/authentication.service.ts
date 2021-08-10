@@ -18,35 +18,32 @@ export class AuthenticationService {
     this.firebaseAuth.authState.subscribe((user) => {
       console.log('this is from firebase authstate');
       if (user) {
-        this.SetUserData(user);
+        this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        this.router.navigate(['todo'])
+        this.router.navigate(['todo']);
       } else {
         localStorage.setItem('user', null);
       }
     });
   }
 
-  AuthLogin(provider) {
-    return this.firebaseAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        console.log(result)
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+  async AuthLogin(provider: firebase.auth.AuthProvider): Promise<void> {
+    try {
+      await this.firebaseAuth.signInWithPopup(provider);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
-  GoogleAuth() {
+  GoogleAuth(): void {
     this.AuthLogin(new firebase.auth.GoogleAuthProvider());
   }
 
-  signIn(email: string, password: string) {
+  signIn(email: string, password: string): void {
     this.firebaseAuth
       .signInWithEmailAndPassword(email, password)
       .then(({ user }) => {
-        this.SetUserData(user);
+        this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
       })
       .catch((err) => {
@@ -54,11 +51,11 @@ export class AuthenticationService {
       });
   }
 
-  createUser(email: string, password: string) {
+  createUser(email: string, password: string): void {
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
-        this.SetUserData(user);
+        this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         this.router.navigate(['login']);
       })
@@ -69,20 +66,17 @@ export class AuthenticationService {
 
   signOut() {
     this.firebaseAuth.signOut().then((res) => {
-      localStorage.removeItem('user');
-      this.router.navigateByUrl('/');
+      localStorage.clear()
+      this.router.navigate(['login']);
     });
-  }
-
-  SetUserData(user: User) {
-    this.userData = {
-      uid: user.uid,
-      email: user.email,
-    };
   }
 
   get isLoggedIn(): boolean {
     this.userData = JSON.parse(localStorage.getItem('user'));
-    return this.userData !== null ? true : false;
+    if (this.userData !== null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

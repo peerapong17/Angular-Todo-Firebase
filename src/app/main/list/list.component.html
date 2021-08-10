@@ -1,6 +1,6 @@
 <span class="list-container">
   <div class="checkbox-container">
-    <input type="checkbox" id="vehicle1" name="vehicle1" />
+    <input type="checkbox" name="vehicle1" [(ngModel)]="isCompleted" (click)="toggle()" />
   </div>
   <div class="task-container">
     <span *ngIf="!isEditing ; else elseBlock">{{task}}</span>

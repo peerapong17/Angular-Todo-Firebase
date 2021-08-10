@@ -21,14 +21,25 @@ export class FirestoreService {
       .snapshotChanges();
   }
 
-  addTask(task: string) {
+  addTask(task: string, isCompleted: boolean) {
     this.angularFireStore
       .collection('Todo')
       .add({
         task: task,
+        isCompleted: isCompleted,
         userId: this.authService.userData.uid,
         createdAt: new Date(),
       })
+      .then((res) => {
+        console.log(res);
+      });
+  }
+
+  toggleTask(id: string, isCompleted: boolean){
+    this.angularFireStore
+      .collection('Todo')
+      .doc(id)
+      .update({ isCompleted:isCompleted })
       .then((res) => {
         console.log(res);
       });
@@ -38,7 +49,7 @@ export class FirestoreService {
     this.angularFireStore
       .collection('Todo')
       .doc(id)
-      .update({ task: task })
+      .update({ task:task })
       .then((res) => {
         console.log(res);
       });

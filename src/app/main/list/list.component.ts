@@ -11,6 +11,7 @@ export class ListComponent implements OnInit {
   @Input() task: string = '';
   @Input() createdAt: any = '';
   @Input() id: string = '';
+  @Input() isCompleted: boolean = false;
 
   constructor(private fireStore: FirestoreService) {}
 
@@ -22,6 +23,11 @@ export class ListComponent implements OnInit {
 
   onEdit() {
     this.isEditing = !this.isEditing;
+  }
+
+  toggle() {
+    this.isCompleted = !this.isCompleted;
+    this.fireStore.toggleTask(this.id, this.isCompleted);
   }
 
   onUpdate() {

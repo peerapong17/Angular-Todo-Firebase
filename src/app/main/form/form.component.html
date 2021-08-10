@@ -1,6 +1,6 @@
 <div class="input-container">
-    <form class="form-group">
-        <input type="text" name="todo" autocomplete="off" [(ngModel)]="task"/>
+    <form [formGroup]="taskForm" class="form-group">
+        <input formControlName="task" type="text" name="todo" autocomplete="off"/>
         <button (click)='addTask()'>Add</button>
     </form>
 </div>
