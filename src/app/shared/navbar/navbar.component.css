@@ -13,24 +13,25 @@
 span {
     font-size: 45px;
     font-weight: 600;
-    color: wheat;
+    color: rgb(255, 248, 236);
 }
 
 button {
     height: 50px;
     width: 120px;
     border: none;
-    border-radius: 7px;
+    border-radius: 4px;
     background: rgb(255, 32, 32);
     font-size: 23px;
     cursor: pointer;
     font-weight: 600;
-    color: wheat;
-    box-shadow: 2px 2px rgb(95, 95, 95);
+    color: rgb(255, 248, 235);
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 1px 2px 2px rgb(255, 22, 22);
 }
 
 button:hover {
-    background: rgb(238, 85, 85);
+    background: rgb(251, 18, 18);
 }
 
 button:active {

@@ -11,13 +11,13 @@
   </div>
 
   <div class="btn-container">
-    <button (click)="onEdit()" *ngIf="!isEditing;else elseBtnEdit"  class="btn-edit">Edit</button>
+    <button (click)="onEdit()" *ngIf="!isEditing;else elseBtnEdit" class="btn-edit"><fa-icon [icon]="faEdit"></fa-icon></button>
     <ng-template #elseBtnEdit>
-      <button (click)="onUpdate()" class="btn-update">Update</button>
+      <button (click)="onUpdate()" class="btn-update"><fa-icon [icon]="faCheck"></fa-icon></button>
     </ng-template>
-    <button  (click)="onDelete()" *ngIf="!isEditing;else elseBtnDelete" class="btn-delete">Delete</button>
+    <button (click)="onDelete()" *ngIf="!isEditing;else elseBtnDelete" class="btn-delete"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
     <ng-template #elseBtnDelete>
-      <button (click)="onCancel()" class="btn-cancel" >Cancel</button>
+      <button (click)="onCancel()" class="btn-cancel"><fa-icon [icon]="faTimes"></fa-icon></button>
     </ng-template>
   </div>
 </span>

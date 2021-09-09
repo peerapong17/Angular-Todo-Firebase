@@ -27,7 +27,7 @@
         </div>
         <div class="account-box">
             <span class="account">Already have account ?</span>
-            <span (click)="login()" class="register">Login</span>
+            <span [routerLink]="['/login']"  class="register">Login</span>
         </div>
         <button (click)="register()">Register</button>
     </form>

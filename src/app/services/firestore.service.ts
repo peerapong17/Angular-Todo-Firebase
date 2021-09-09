@@ -7,12 +7,12 @@ import { Injectable } from '@angular/core';
 })
 export class FirestoreService {
   constructor(
-    private angularFireStore: AngularFirestore,
+    private fireStore: AngularFirestore,
     private authService: AuthenticationService
   ) {}
 
   getTask() {
-    return this.angularFireStore
+    return this.fireStore
       .collection('Todo', (ref) =>
         ref
           .orderBy('createdAt', 'desc')
@@ -22,7 +22,7 @@ export class FirestoreService {
   }
 
   addTask(task: string, isCompleted: boolean) {
-    this.angularFireStore
+    this.fireStore
       .collection('Todo')
       .add({
         task: task,
@@ -36,7 +36,7 @@ export class FirestoreService {
   }
 
   toggleTask(id: string, isCompleted: boolean){
-    this.angularFireStore
+    this.fireStore
       .collection('Todo')
       .doc(id)
       .update({ isCompleted:isCompleted })
@@ -46,7 +46,7 @@ export class FirestoreService {
   }
 
   updateTask(id: string, task: string) {
-    this.angularFireStore
+    this.fireStore
       .collection('Todo')
       .doc(id)
       .update({ task:task })
@@ -56,6 +56,6 @@ export class FirestoreService {
   }
 
   deleteTask(id: string) {
-    this.angularFireStore.collection('Todo').doc(id).delete();
+    this.fireStore.collection('Todo').doc(id).delete();
   }
 }

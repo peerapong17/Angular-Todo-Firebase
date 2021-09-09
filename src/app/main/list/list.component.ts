@@ -1,5 +1,9 @@
 import { FirestoreService } from './../../services/firestore.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list',
@@ -7,6 +11,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
+  faEdit = faEdit;
+  faCheck = faCheck;
+  faTimes = faTimes;
+  faTrashAlt = faTrashAlt;
   isEditing: boolean = false;
   @Input() task: string = '';
   @Input() createdAt: any = '';

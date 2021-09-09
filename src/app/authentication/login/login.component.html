@@ -11,7 +11,7 @@
         </div>
         <div class="account-box">
             <span class="account">Don't have account ?</span>
-            <span (click)="register()" class="register">Register</span>
+            <span [routerLink]="['/register']" class="register">Register</span>
         </div>
         <button (click)="login()">Login</button>
 

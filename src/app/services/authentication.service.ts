@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -7,31 +8,32 @@ export interface User {
   uid: string;
   email: string;
 }
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  userData: User;
+  userData: User = null;
+  $isLoggedin = new Subject<boolean>()
 
-  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
-    this.firebaseAuth.authState.subscribe((user) => {
-      console.log('this is from firebase authstate');
+  constructor(private auth: AngularFireAuth, private router: Router) {
+    this.auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        this.router.navigate(['todo']);
+        this.$isLoggedin.next(true)
       } else {
-        localStorage.setItem('user', null);
+        localStorage.clear();
       }
     });
   }
 
   async AuthLogin(provider: firebase.auth.AuthProvider): Promise<void> {
     try {
-      await this.firebaseAuth.signInWithPopup(provider);
+      await this.auth.signInWithPopup(provider).then((res) => {
+        this.userData = res.user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+      });
     } catch (error) {
-      alert(error.message);
+      window.alert(error.message);
     }
   }
 
@@ -40,7 +42,7 @@ export class AuthenticationService {
   }
 
   signIn(email: string, password: string): void {
-    this.firebaseAuth
+    this.auth
       .signInWithEmailAndPassword(email, password)
       .then(({ user }) => {
         this.userData = user;
@@ -52,11 +54,10 @@ export class AuthenticationService {
   }
 
   createUser(email: string, password: string): void {
-    this.firebaseAuth
+    this.auth
       .createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
         this.router.navigate(['login']);
       })
       .catch((err) => {
@@ -65,14 +66,13 @@ export class AuthenticationService {
   }
 
   signOut() {
-    this.firebaseAuth.signOut().then((res) => {
-      localStorage.clear()
-      this.router.navigate(['login']);
+    this.auth.signOut().then((res) => {
+      localStorage.clear();
+      this.$isLoggedin.next(false)
     });
   }
 
   get isLoggedIn(): boolean {
-    this.userData = JSON.parse(localStorage.getItem('user'));
     if (this.userData !== null) {
       return true;
     } else {
